@@ -1,0 +1,59 @@
+/* ------------------------------------------------------------------
+   Token desain. Gelap = tinta + cyan neon (dari banner).
+   Terang = kertas washi + tinta, cyan digelapkan agar kontras lolos AA.
+------------------------------------------------------------------- */
+:root {
+  --f-display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --f-body: "Instrument Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --f-han: "Katana Han", "Noto Serif CJK SC", "Songti SC", serif;
+
+  --gutter: clamp(16px, 4vw, 32px);
+  --maxw: 1200px;
+  --nav-h: 68px;
+  --ease: cubic-bezier(0.2, 0.7, 0.1, 1);
+
+  /* Warna konstan (area yang selalu gelap: hero, band unduh) */
+  --stage: #03070a;
+  --stage-ink: #e6f4f5;
+  --stage-ink-2: rgba(230, 244, 245, 0.7);
+  --neon: #25e8f2;
+  --neon-ink: #021417;
+
+  /* Tema gelap (default) */
+  color-scheme: dark;
+  --bg: #05090b;
+  --bg-2: #081115;
+  --surface: #0a1519;
+  --surface-2: #0f1d22;
+  --line: rgba(160, 235, 245, 0.12);
+  --line-strong: rgba(160, 235, 245, 0.26);
+  --ink: #e6f4f5;
+  --ink-2: #9ab2b7;
+  --ink-3: #7a959a;
+  --accent: #25e8f2;
+  --accent-ink: #021417;
+  --accent-soft: rgba(37, 232, 242, 0.1);
+  --seal: #ff4048;
+  --grain: 0.05;
+  --shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.8);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #eef1ec;
+  --bg-2: #e4e9e2;
+  --surface: #f8faf6;
+  --surface-2: #ffffff;
+  --line: rgba(5, 20, 24, 0.13);
+  --line-strong: rgba(5, 20, 24, 0.3);
+  --ink: #071115;
+  --ink-2: #3a4e53;
+  --ink-3: #5f7176;
+  --accent: #00717b;
+  --accent-ink: #f2ffff;
+  --accent-soft: rgba(0, 113, 123, 0.09);
+  --seal: #c9232b;
+  --grain: 0.09;
+  --shadow: 0 30px 70px -35px rgba(5, 20, 24, 0.35);
+}

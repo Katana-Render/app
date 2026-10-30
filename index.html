@@ -1,0 +1,618 @@
+<!doctype html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Katana Render — Render animasi web ke video 4K</title>
+  <meta name="description" content="Katana Render mengubah animasi web (CSS Keyframes, GSAP, Canvas 2D, Three.js, GLSL) menjadi video hingga 4K dan gambar hingga 8K. Aplikasi Android, online dan offline.">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#05090b" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#eef1ec" media="(prefers-color-scheme: light)">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Katana Render — Render animasi web ke video 4K">
+  <meta property="og:description" content="Render CSS Keyframes, GSAP, Canvas 2D, Three.js dan GLSL Raymarching ke video 4K dan gambar 8K. Android 7.0+.">
+  <meta property="og:image" content="assets/img/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+
+  <!-- Atur tema sebelum render pertama agar tidak berkedip -->
+  <script src="js/core/theme-init.js"></script>
+
+  <link rel="stylesheet" href="css/base/fonts.css">
+  <link rel="stylesheet" href="css/base/tokens.css">
+  <link rel="stylesheet" href="css/base/reset.css">
+  <link rel="stylesheet" href="css/base/typography.css">
+  <link rel="stylesheet" href="css/base/layout.css">
+  <link rel="stylesheet" href="css/components/buttons.css">
+  <link rel="stylesheet" href="css/components/nav.css">
+  <link rel="stylesheet" href="css/components/hero.css">
+  <link rel="stylesheet" href="css/components/marquee.css">
+  <link rel="stylesheet" href="css/components/workflow.css">
+  <link rel="stylesheet" href="css/components/engines.css">
+  <link rel="stylesheet" href="css/components/features.css">
+  <link rel="stylesheet" href="css/components/specs.css">
+  <link rel="stylesheet" href="css/components/pricing.css">
+  <link rel="stylesheet" href="css/components/humanity.css">
+  <link rel="stylesheet" href="css/components/download.css">
+  <link rel="stylesheet" href="css/components/faq.css">
+  <link rel="stylesheet" href="css/components/contact.css">
+  <link rel="stylesheet" href="css/components/footer.css">
+  <link rel="stylesheet" href="css/components/toast.css">
+</head>
+
+<body>
+  <a class="skip" href="#main" data-i18n="skip">Lompat ke konten</a>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <div class="container nav__bar">
+      <a class="nav__brand" href="#top" aria-label="Katana Render">
+        <img src="assets/img/logo.webp" width="40" height="40" alt="">
+        <span class="nav__name">Katana Render</span>
+      </a>
+
+      <nav class="nav__links" id="nav-links" aria-label="Utama" data-i18n-attr="aria-label:nav.label">
+        <a href="#workflow" data-i18n="nav.workflow">Cara kerja</a>
+        <a href="#engines" data-i18n="nav.engines">Mesin</a>
+        <a href="#features" data-i18n="nav.features">Fitur</a>
+        <a href="#specs" data-i18n="nav.specs">Spesifikasi</a>
+        <a href="#pricing" data-i18n="nav.pricing">Harga</a>
+        <a href="#humanity" data-i18n="nav.humanity">Dukungan</a>
+        <a href="#contact" data-i18n="nav.contact">Kontak</a>
+      </nav>
+
+      <div class="nav__tools">
+        <div class="seg" role="group" aria-label="Bahasa" data-i18n-attr="aria-label:nav.lang">
+          <button type="button" data-lang="id" aria-pressed="true">ID</button>
+          <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <button type="button" class="icon-btn" id="theme-toggle" aria-label="Ganti tema" data-i18n-attr="aria-label:nav.theme">
+          <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></svg>
+        </button>
+        <a class="btn btn--sm nav__cta" data-download href="https://drive.google.com/file/d/1p0Or61ZKCvpSlq1IS3G8PipPp3eMgtTs/view?usp=drivesdk" target="_blank" rel="noopener" data-i18n="nav.download">Unduh</a>
+        <button type="button" class="burger icon-btn" id="burger" aria-expanded="false" aria-controls="nav-links" aria-label="Menu" data-i18n-attr="aria-label:nav.menu">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="top">
+      <div class="hero__stage">
+        <picture class="hero__art" id="hero-art">
+          <source media="(max-width: 760px)" srcset="assets/img/katana-banner-m.webp">
+          <img src="assets/img/katana-banner.webp" width="2200" height="1228" fetchpriority="high"
+               alt="Samurai berbaju zirah hitam dengan visor cyan neon di depan tulisan Katana Render"
+               data-i18n-attr="alt:hero.alt">
+        </picture>
+        <div class="hero__fog" aria-hidden="true"><i class="hero__fog-a keep-motion"></i><i class="hero__fog-b keep-motion"></i></div>
+        <div class="hero__shade"></div>
+        <p class="hero__hud hero__hud--l mono" aria-hidden="true"><span>M0</span> Deterministic Virtual Clock</p>
+        <p class="hero__hud hero__hud--r mono" aria-hidden="true">HEVC <span>4K</span></p>
+        <svg class="hero__blade" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="blade-g" x1="0" x2="1"><stop offset="0" stop-color="#25e8f2" stop-opacity="0"/><stop offset=".35" stop-color="#25e8f2"/><stop offset="1" stop-color="#e6f4f5"/></linearGradient>
+          </defs>
+          <line x1="0" y1="0" x2="100" y2="10" stroke="url(#blade-g)" stroke-width="2" vector-effect="non-scaling-stroke"/>
+        </svg>
+      </div>
+
+      <div class="container hero__body">
+        <div class="hero__copy">
+          <p class="eyebrow" data-reveal>Katana Render Studio · v1.0</p>
+          <h1 class="h-display hero__title" data-reveal style="--d:80ms" data-i18n-html="hero.title">Animasi web jadi video <em>4K</em>.</h1>
+          <p class="lead" data-reveal style="--d:160ms" data-i18n="hero.lead">Render CSS Keyframes, GSAP, Timeline, Canvas 2D, Three.js, sampai GLSL Raymarching Shader langsung dari Android. Video hingga 4K, gambar hingga 8K.</p>
+        </div>
+
+        <div class="hero__side" data-reveal style="--d:240ms">
+          <div class="hero__cta">
+            <a class="btn" data-download href="https://drive.google.com/file/d/1p0Or61ZKCvpSlq1IS3G8PipPp3eMgtTs/view?usp=drivesdk" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12m0 0l-5-5m5 5l5-5M5 20h14"/></svg>
+              <span data-i18n="hero.cta">Unduh untuk Android</span>
+            </a>
+            <a class="btn btn--ghost" href="#pricing" data-i18n="hero.cta2">Lihat paket</a>
+          </div>
+          <p class="hero__note" data-i18n="hero.note">Coba gratis 24 jam. Semua fitur terbuka.</p>
+          <ul class="hero__chips mono" aria-label="Ringkasan">
+            <li>Android 7.0+</li>
+            <li>v1.0</li>
+            <li>HEVC 4K</li>
+            <li>Online + Offline</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MARQUEE ============ -->
+    <section class="marquee" aria-labelledby="marquee-label">
+      <p class="marquee__label mono" id="marquee-label" data-i18n="marquee.label">Mesin yang bisa dirender</p>
+      <div class="marquee__viewport">
+        <div class="marquee__track keep-motion">
+          <ul class="marquee__list">
+            <li>CSS Keyframes</li><li>GSAP</li><li>Timeline</li><li>Canvas 2D</li><li>Three.js</li><li>GLSL Raymarching Shader</li>
+          </ul>
+          <ul class="marquee__list" aria-hidden="true">
+            <li>CSS Keyframes</li><li>GSAP</li><li>Timeline</li><li>Canvas 2D</li><li>Three.js</li><li>GLSL Raymarching Shader</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WORKFLOW ============ -->
+    <section class="section workflow" id="workflow">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow" data-reveal data-i18n="wf.eyebrow">Cara kerja</p>
+          <h2 class="h-display" data-reveal data-i18n="wf.title">Dari kode ke file jadi, tiga langkah.</h2>
+        </header>
+
+        <ol class="workflow__steps">
+          <li class="step" data-reveal>
+            <span class="step__no" aria-hidden="true">01</span>
+            <h3 class="step__t" data-i18n="wf.1.t">Masukkan kodenya</h3>
+            <p class="step__d" data-i18n="wf.1.d">Tulis atau tempel kode sendiri, impor file HTML, buka arsip ZIP, atau muat dari live web.</p>
+            <p class="step__tags mono">Code · HTML · ZIP · Live</p>
+          </li>
+          <li class="step" data-reveal style="--d:120ms">
+            <span class="step__no" aria-hidden="true">02</span>
+            <h3 class="step__t" data-i18n="wf.2.t">Render per frame</h3>
+            <p class="step__d" data-i18n="wf.2.d">Mesin M0 menghitung tiap frame dari jam virtual, bukan jam perangkat. Resolusi sampai 4K untuk video.</p>
+            <p class="step__tags mono">M0 · HEVC · 4K</p>
+          </li>
+          <li class="step" data-reveal style="--d:240ms">
+            <span class="step__no" aria-hidden="true">03</span>
+            <h3 class="step__t" data-i18n="wf.3.t">Ekspor hasilnya</h3>
+            <p class="step__d" data-i18n="wf.3.d">Simpan sebagai video atau gambar, raster maupun vektor.</p>
+            <p class="step__tags mono">MP4 · PNG · SVG</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ ENGINES ============ -->
+    <section class="section engines" id="engines">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow" data-reveal data-i18n="eng.eyebrow">Mesin</p>
+          <h2 class="h-display" data-reveal data-i18n="eng.title">Enam jenis animasi web, satu aplikasi.</h2>
+        </header>
+
+        <div class="engines__stage cut" data-reveal>
+          <div class="engines__tabs" role="tablist" aria-orientation="vertical" aria-label="Mesin" data-i18n-attr="aria-label:eng.tablist">
+            <button role="tab" id="tab-1" aria-controls="panel-1" aria-selected="true"><span class="mono">01</span>CSS Keyframes</button>
+            <button role="tab" id="tab-2" aria-controls="panel-2" aria-selected="false" tabindex="-1"><span class="mono">02</span>GSAP</button>
+            <button role="tab" id="tab-3" aria-controls="panel-3" aria-selected="false" tabindex="-1"><span class="mono">03</span>Timeline</button>
+            <button role="tab" id="tab-4" aria-controls="panel-4" aria-selected="false" tabindex="-1"><span class="mono">04</span>Canvas 2D</button>
+            <button role="tab" id="tab-5" aria-controls="panel-5" aria-selected="false" tabindex="-1"><span class="mono">05</span>Three.js</button>
+            <button role="tab" id="tab-6" aria-controls="panel-6" aria-selected="false" tabindex="-1"><span class="mono">06</span>GLSL Raymarching</button>
+          </div>
+
+          <div class="engines__panels">
+            <article class="panel" role="tabpanel" id="panel-1" aria-labelledby="tab-1">
+              <h3 class="h-display">CSS Keyframes</h3>
+              <p class="panel__d" data-i18n="eng.1.d">Animasi @keyframes dan transition diambil per frame dari jam virtual.</p>
+              <code class="panel__code">@keyframes slash { to { transform: translateX(100%) } }</code>
+              <ul class="panel__pts"><li data-i18n="eng.1.p1">Loader, transisi UI, teks kinetik</li><li data-i18n="eng.1.p2">Cukup HTML dan CSS</li></ul>
+            </article>
+            <article class="panel" role="tabpanel" id="panel-2" aria-labelledby="tab-2" hidden>
+              <h3 class="h-display">GSAP</h3>
+              <p class="panel__d" data-i18n="eng.2.d">Tween dan timeline GSAP dikunci ke jam virtual, jadi tiap frame jatuh tepat di waktunya.</p>
+              <code class="panel__code">gsap.timeline().to(".blade", { x: 600, ease: "power4.out" })</code>
+              <ul class="panel__pts"><li data-i18n="eng.2.p1">Motion graphic berlapis</li><li data-i18n="eng.2.p2">Urutan dan easing presisi</li></ul>
+            </article>
+            <article class="panel" role="tabpanel" id="panel-3" aria-labelledby="tab-3" hidden>
+              <h3 class="h-display">Timeline</h3>
+              <p class="panel__d" data-i18n="eng.3.d">Animasi berbasis garis waktu: urutan, jeda, dan tumpang-tindih antar elemen dirender sesuai posisinya.</p>
+              <code class="panel__code">tl.add(intro).add(scene, "-=0.4").seek(2.4)</code>
+              <ul class="panel__pts"><li data-i18n="eng.3.p1">Intro, outro, dan lower third</li><li data-i18n="eng.3.p2">Banyak adegan dalam satu proyek</li></ul>
+            </article>
+            <article class="panel" role="tabpanel" id="panel-4" aria-labelledby="tab-4" hidden>
+              <h3 class="h-display">Canvas 2D</h3>
+              <p class="panel__d" data-i18n="eng.4.d">Gambar Canvas 2D digambar ulang tiap frame.</p>
+              <code class="panel__code">ctx.clearRect(0, 0, w, h); ctx.arc(x, y, r, 0, Math.PI * 2)</code>
+              <ul class="panel__pts"><li data-i18n="eng.4.p1">Partikel dan generative art</li><li data-i18n="eng.4.p2">Grafik data bergerak</li></ul>
+            </article>
+            <article class="panel" role="tabpanel" id="panel-5" aria-labelledby="tab-5" hidden>
+              <h3 class="h-display">Three.js</h3>
+              <p class="panel__d" data-i18n="eng.5.d">Scene 3D WebGL lengkap dengan kamera, cahaya, dan model.</p>
+              <code class="panel__code">renderer.render(scene, camera)</code>
+              <ul class="panel__pts"><li data-i18n="eng.5.p1">Logo 3D dan produk</li><li data-i18n="eng.5.p2">Sampai video 4K</li></ul>
+            </article>
+            <article class="panel" role="tabpanel" id="panel-6" aria-labelledby="tab-6" hidden>
+              <h3 class="h-display">GLSL Raymarching Shader</h3>
+              <p class="panel__d" data-i18n="eng.6.d">Shader fragment dengan ray marching: bentuk 3D lahir dari rumus matematika, dihitung per piksel.</p>
+              <code class="panel__code">float d = map(ro + rd * t); t += d;</code>
+              <ul class="panel__pts"><li data-i18n="eng.6.p1">Visual abstrak dan fraktal</li><li data-i18n="eng.6.p2">Latar loop yang bersih</li></ul>
+            </article>
+          </div>
+
+          <img class="engines__art" data-parallax="0.06" src="assets/img/katana-samping.webp" width="1024" height="1024" loading="lazy"
+               alt="Samurai berzirah hitam dengan garis cyan neon sedang menghunus katana" data-i18n-attr="alt:eng.alt">
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FEATURES ============ -->
+    <section class="section features" id="features">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow" data-reveal data-i18n="feat.eyebrow">Fitur</p>
+          <h2 class="h-display" data-reveal data-i18n="feat.title">Dibuat untuk yang serius merender.</h2>
+        </header>
+
+        <div class="bento">
+          <article class="cell cell--a cut" data-reveal>
+            <p class="cell__tag mono">Online + Offline</p>
+            <h3 class="cell__t h-display" data-i18n="feat.a.t">Koneksi putus? Render tetap jalan.</h3>
+            <p class="cell__d" data-i18n="feat.a.d">Dipakai online maupun offline, sesuai situasi Anda.</p>
+            <img class="cell__art" data-parallax="0.05" src="assets/img/katana-panah.webp" width="1024" height="1024" loading="lazy"
+                 alt="Samurai berzirah hitam tertancap anak panah namun tetap berdiri tegak" data-i18n-attr="alt:feat.a.alt">
+          </article>
+
+          <article class="cell cell--b cut" data-reveal style="--d:80ms">
+            <h3 class="cell__t cell__t--sm" data-i18n="feat.b.t">Empat pintu masuk untuk kode</h3>
+            <ul class="cell__list">
+              <li><span class="mono">A</span><span data-i18n="feat.b.1">Edit kode manual</span></li>
+              <li><span class="mono">B</span><span data-i18n="feat.b.2">Impor file HTML</span></li>
+              <li><span class="mono">C</span><span data-i18n="feat.b.3">Arsip ZIP</span></li>
+              <li><span class="mono">D</span><span data-i18n="feat.b.4">Live web</span></li>
+            </ul>
+          </article>
+
+          <article class="cell cell--c cut" data-reveal style="--d:120ms">
+            <h3 class="cell__t cell__t--sm" data-i18n="feat.c.t">Latar aplikasi milik Anda</h3>
+            <p class="cell__d" data-i18n="feat.c.d">Pasang gambar atau video favorit sebagai latar belakang aplikasi.</p>
+          </article>
+
+          <article class="cell cell--d cut" data-reveal style="--d:160ms">
+            <p class="cell__big" aria-hidden="true">4K</p>
+            <h3 class="cell__t cell__t--sm" data-i18n="feat.d.t">Video, HEVC</h3>
+            <p class="cell__d" data-i18n="feat.d.d">Enkoder HEVC untuk video resolusi tinggi hingga 4K.</p>
+          </article>
+
+          <article class="cell cell--e cut" data-reveal style="--d:200ms">
+            <p class="cell__big" aria-hidden="true">8K</p>
+            <h3 class="cell__t cell__t--sm" data-i18n="feat.e.t">Gambar</h3>
+            <p class="cell__d" data-i18n="feat.e.d">Raster PNG/JPG dan vektor SVG/EPS/AI.</p>
+          </article>
+
+          <article class="cell cell--f cut" data-reveal style="--d:240ms">
+            <h3 class="cell__t cell__t--sm" data-i18n="feat.f.t">Jam virtual M0</h3>
+            <p class="cell__d" data-i18n="feat.f.d">Arsitektur Deterministic Virtual Clock: waktu animasi ditentukan mesin, bukan kecepatan perangkat.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SPECS ============ -->
+    <section class="section specs" id="specs">
+      <div class="container specs__grid">
+        <figure class="specs__fig" data-reveal>
+          <div class="specs__frame">
+            <img data-parallax="0.04" src="assets/img/katana-belakang.webp" width="1024" height="1024" loading="lazy"
+                 alt="Samurai dilihat dari belakang dengan katana terikat di punggung" data-i18n-attr="alt:spec.alt">
+          </div>
+          <figcaption class="specs__han" aria-hidden="true">刀</figcaption>
+        </figure>
+
+        <div class="specs__body">
+          <header class="section-head">
+            <p class="eyebrow" data-reveal data-i18n="spec.eyebrow">Spesifikasi</p>
+            <h2 class="h-display" data-reveal data-i18n="spec.title">Spesifikasi lengkap, tanpa tebak-tebakan.</h2>
+          </header>
+
+          <dl class="sheet" data-reveal>
+            <div class="sheet__row"><dt class="mono" data-i18n="spec.k1">Nama rilis</dt><dd>Katana Render Studio</dd></div>
+            <div class="sheet__row"><dt class="mono" data-i18n="spec.k2">Pengembang</dt><dd>Cloud Sunnah</dd></div>
+            <div class="sheet__row"><dt class="mono" data-i18n="spec.k3">Versi</dt><dd>v1.0</dd></div>
+            <div class="sheet__row"><dt class="mono" data-i18n="spec.k4">Kompatibilitas</dt><dd>Android 7.0 (API 24)</dd></div>
+            <div class="sheet__row"><dt class="mono" data-i18n="spec.k5">Arsitektur mesin</dt><dd>M0 Deterministic Virtual Clock</dd></div>
+            <div class="sheet__row"><dt class="mono" data-i18n="spec.k6">Dukungan enkoder</dt><dd>HEVC (4K)</dd></div>
+            <div class="sheet__row"><dt class="mono" data-i18n="spec.k7">Keluaran gambar</dt>
+              <dd class="fmt"><span>Raster</span><b>PNG</b><b>JPG</b><span>Vector</span><b>SVG</b><b>EPS</b><b>AI</b></dd></div>
+            <div class="sheet__row"><dt class="mono" data-i18n="spec.k8">Keluaran video</dt>
+              <dd class="fmt"><b>MP4</b><b>WEBP</b><b>GIF</b><b>APNG</b></dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRICING ============ -->
+    <section class="section pricing" id="pricing">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow" data-reveal data-i18n="price.eyebrow">Paket</p>
+          <h2 class="h-display" data-reveal data-i18n="price.title">Satu set fitur. Dua lama akses.</h2>
+          <p class="lead" data-reveal data-i18n="price.lead">Semua fitur terbuka di kedua paket. Bedanya hanya durasi.</p>
+        </header>
+
+        <div class="plans">
+          <article class="plan plan--free cut" data-reveal>
+            <header class="plan__head">
+              <h3 class="plan__name h-display">Free</h3>
+              <p class="plan__tag mono" data-i18n="price.free.tag">Uji coba</p>
+            </header>
+            <p class="plan__price"><span class="plan__amt">$0</span><span class="plan__per" data-i18n="price.free.per">/ 24 jam</span></p>
+            <ul class="plan__list">
+              <li data-i18n="price.1">Semua fitur terbuka</li>
+              <li data-i18n="price.free.2">Akses 24 jam (1 hari)</li>
+              <li data-i18n="price.free.3">Pasang dan langsung coba</li>
+            </ul>
+            <a class="btn btn--ghost plan__cta" data-download href="https://drive.google.com/file/d/1p0Or61ZKCvpSlq1IS3G8PipPp3eMgtTs/view?usp=drivesdk" target="_blank" rel="noopener" data-i18n="price.free.cta">Unduh dan coba</a>
+          </article>
+
+          <article class="plan plan--pro cut" data-reveal style="--d:120ms">
+            <div class="plan__copy">
+              <header class="plan__head">
+                <h3 class="plan__name h-display">Pro</h3>
+                <p class="plan__tag plan__tag--hot mono" data-i18n="price.pro.badge">Diskon 80%</p>
+              </header>
+              <p class="plan__price">
+                <span class="plan__was" aria-label="Harga awal 5 dolar"><s>$5</s></span>
+                <span class="plan__amt">$1</span><span class="plan__per" data-i18n="price.pro.per">/ bulan</span>
+              </p>
+              <ul class="plan__list">
+                <li data-i18n="price.1">Semua fitur terbuka</li>
+                <li data-i18n="price.pro.2">Akses penuh 1 bulan</li>
+                <li data-i18n="price.pro.3">Harga normal $5/bulan, kini $1/bulan</li>
+              </ul>
+              <a class="btn plan__cta" id="wa-pro" href="https://wa.me/6285648545159" target="_blank" rel="noopener" data-wa="price.pro.msg" data-i18n="price.pro.cta">Berlangganan via WhatsApp</a>
+            </div>
+            <div class="plan__art" aria-hidden="false">
+              <img data-parallax="0.05" src="assets/img/katana-uang.webp" width="1024" height="1024" loading="lazy"
+                   alt="Samurai berzirah hitam menghitung uang dolar di tengah lembaran yang beterbangan" data-i18n-attr="alt:price.alt">
+            </div>
+            <div class="seal" aria-hidden="true"><span>-80%</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DUKUNGAN KEMANUSIAAN ============ -->
+    <section class="section humanity" id="humanity" aria-labelledby="hum-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow" data-reveal data-i18n="hum.eyebrow">Dukungan Kemanusiaan</p>
+          <h2 class="h-display" id="hum-title" data-reveal data-i18n="hum.title">Terima kasih telah berlangganan!</h2>
+          <p class="lead" data-reveal data-i18n="hum.lead">Dukungan Anda membantu kami mengembangkan aplikasi ini dan memungkinkan kami untuk membagikan sebagian dari keuntungan kami, demi mendukung upaya bantuan di Palestina.</p>
+        </header>
+
+        <div class="hum" data-reveal>
+          <div class="hum__frame cut">
+            <div class="hum__view">
+              <div class="hum__track" tabindex="0" role="group" aria-roledescription="carousel" aria-label="Galeri banner kemanusiaan" data-i18n-attr="aria-label:hum.gallery">
+            <div class="hum__slide" role="group" aria-roledescription="slide" aria-label="1 / 5">
+              <img src="assets/img/humanity/banner_humanitarian_1.webp" width="1080" height="360" loading="lazy" decoding="async"
+                   alt="Warga sipil Palestina mengungsi di antara puing, dengan Kubah Batu di kejauhan" data-i18n-attr="alt:hum.alt.1">
+            </div>
+            <div class="hum__slide" role="group" aria-roledescription="slide" aria-label="2 / 5">
+              <img src="assets/img/humanity/banner_humanitarian_2.webp" width="1080" height="360" loading="lazy" decoding="async"
+                   alt="Seorang pria menunduk di antara reruntuhan, dan seorang anak perempuan memegang boneka di dekat bendera Palestina" data-i18n-attr="alt:hum.alt.2">
+            </div>
+            <div class="hum__slide" role="group" aria-roledescription="slide" aria-label="3 / 5">
+              <img src="assets/img/humanity/banner_humanitarian_3.webp" width="1080" height="360" loading="lazy" decoding="async"
+                   alt="Para ibu saling menguatkan, sementara anak-anak duduk di dekat tenda pengungsian" data-i18n-attr="alt:hum.alt.3">
+            </div>
+            <div class="hum__slide" role="group" aria-roledescription="slide" aria-label="4 / 5">
+              <img src="assets/img/humanity/banner_humanitarian_4.webp" width="1080" height="360" loading="lazy" decoding="async"
+                   alt="Seorang ibu menggendong dan menggandeng anaknya melewati puing bangunan" data-i18n-attr="alt:hum.alt.4">
+            </div>
+            <div class="hum__slide" role="group" aria-roledescription="slide" aria-label="5 / 5">
+              <img src="assets/img/humanity/banner_humanitarian_5.webp" width="1080" height="360" loading="lazy" decoding="async"
+                   alt="Anak-anak bermain bersama di reruntuhan saat matahari terbenam" data-i18n-attr="alt:hum.alt.5">
+            </div>
+              </div>
+            </div>
+          </div>
+          <div class="hum__bar">
+            <div class="hum__dots">
+            <button type="button" class="hum__dot" aria-current="true" aria-label="Banner 1 dari 5"></button>
+            <button type="button" class="hum__dot" aria-label="Banner 2 dari 5"></button>
+            <button type="button" class="hum__dot" aria-label="Banner 3 dari 5"></button>
+            <button type="button" class="hum__dot" aria-label="Banner 4 dari 5"></button>
+            <button type="button" class="hum__dot" aria-label="Banner 5 dari 5"></button>
+            </div>
+            <div class="hum__nav">
+              <button type="button" class="icon-btn" data-hum-prev aria-label="Banner sebelumnya" data-i18n-attr="aria-label:hum.prev">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 6l-6 6 6 6"/></svg>
+              </button>
+              <button type="button" class="icon-btn" data-hum-next aria-label="Banner berikutnya" data-i18n-attr="aria-label:hum.next">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 6l6 6-6 6"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="pay__head" data-reveal>
+          <h3 class="h-display" data-i18n="hum.pay.title">Pembayaran resmi</h3>
+          <p class="pay__note mono" data-i18n="hum.pay.note">Hanya kanal di halaman ini yang resmi.</p>
+        </div>
+
+        <div class="pay__grid">
+          <article class="pcard pcard--qr cut" data-reveal>
+            <div class="pcard__top">
+              <span class="pcard__logo"><img src="assets/img/pay/qris-logo.webp" width="52" height="52" loading="lazy" alt=""></span>
+              <div>
+                <h4 class="pcard__name">QRIS</h4>
+                <p class="pcard__k mono" data-i18n="hum.qris.k">Kode QRIS</p>
+              </div>
+            </div>
+            <button type="button" class="qr" data-qr-open data-qr-src="assets/img/pay/me-bar-code.webp" aria-label="Perbesar kode QRIS" data-i18n-attr="aria-label:hum.qris.zoomlabel">
+              <img src="assets/img/pay/me-bar-code.webp" width="1024" height="1024" loading="lazy" decoding="async" alt="Kode QR QRIS untuk pembayaran" data-i18n-attr="alt:hum.qris.alt">
+              <span class="qr__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg></span>
+            </button>
+            <p class="pcard__hint" data-i18n="hum.qris.hint">Pindai dengan aplikasi bank atau e-wallet apa pun.</p>
+            <div class="pcard__act">
+              <button type="button" class="btn btn--sm btn--ghost" data-qr-open data-qr-src="assets/img/pay/me-bar-code.webp"><span data-i18n="hum.qris.zoom">Perbesar</span></button>
+              <a class="btn btn--sm" href="assets/img/pay/me-bar-code.webp" download="katana-render-qris.webp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12m0 0l-5-5m5 5l5-5M5 20h14"/></svg><span data-i18n="hum.qris.save">Unduh QR</span></a>
+            </div>
+          </article>
+
+          <div class="pay__stack">
+            <article class="pcard cut" data-reveal style="--d:100ms">
+              <div class="pcard__top">
+                <span class="pcard__logo"><img src="assets/img/pay/gopay-logo.webp" width="52" height="52" loading="lazy" alt=""></span>
+                <div>
+                  <h4 class="pcard__name">GoPay</h4>
+                  <p class="pcard__k mono" data-i18n="hum.gopay.k">Nomor GoPay</p>
+                </div>
+              </div>
+              <p class="pcard__v">0822 4575 9368</p>
+              <div class="pcard__act">
+                <button type="button" class="btn btn--sm" data-copy="082245759368" aria-label="Salin nomor GoPay" data-i18n-attr="aria-label:hum.gopay.copy"><svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="ic-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span data-i18n="contact.copy">Salin</span></button>
+              </div>
+            </article>
+
+            <article class="pcard cut" data-reveal style="--d:200ms">
+              <div class="pcard__top">
+                <span class="pcard__logo"><img src="assets/img/pay/bank-jago-logo.webp" width="52" height="52" loading="lazy" alt=""></span>
+                <div>
+                  <h4 class="pcard__name">Bank Jago</h4>
+                  <p class="pcard__k mono" data-i18n="hum.jago.k">Nomor rekening</p>
+                </div>
+              </div>
+              <p class="pcard__v">4889 5080 8343 8010</p>
+              <div class="pcard__act">
+                <button type="button" class="btn btn--sm" data-copy="4889508083438010" aria-label="Salin nomor rekening Bank Jago" data-i18n-attr="aria-label:hum.jago.copy"><svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="ic-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span data-i18n="contact.copy">Salin</span></button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DOWNLOAD ============ -->
+    <section class="download on-stage" id="download">
+      <div class="container download__in">
+        <div class="download__logo" data-reveal>
+          <img src="assets/img/logo.webp" width="360" height="360" loading="lazy" alt="Logo Katana Render: helm samurai dengan visor neon" data-i18n-attr="alt:dl.alt">
+        </div>
+        <div class="download__copy">
+          <p class="eyebrow" data-reveal><span class="han" aria-hidden="true">你敢吗</span> <span data-i18n="dl.eyebrow">Berani?</span></p>
+          <h2 class="h-display" data-reveal style="--d:80ms" data-i18n="dl.title">Unduh. Tempel kode. Render.</h2>
+          <p class="lead" data-reveal style="--d:140ms" data-i18n="dl.lead">Katana Render v1.0 untuk Android 7.0 ke atas.</p>
+          <div class="download__act" data-reveal style="--d:200ms">
+            <a class="btn" data-download href="https://drive.google.com/file/d/1p0Or61ZKCvpSlq1IS3G8PipPp3eMgtTs/view?usp=drivesdk" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12m0 0l-5-5m5 5l5-5M5 20h14"/></svg>
+              <span data-i18n="dl.cta">Unduh via Google Drive</span>
+            </a>
+            <p class="mono download__meta" data-i18n="dl.meta">Dikembangkan oleh Cloud Sunnah</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section faq" id="faq">
+      <div class="container faq__grid">
+        <header class="section-head">
+          <p class="eyebrow" data-reveal data-i18n="faq.eyebrow">FAQ</p>
+          <h2 class="h-display" data-reveal data-i18n="faq.title">Pertanyaan yang sering muncul</h2>
+        </header>
+
+        <div class="faq__list" data-reveal>
+          <details name="faq" open><summary><span data-i18n="faq.1.q">Apa bedanya Free dan Pro?</span></summary><p data-i18n="faq.1.a">Fiturnya sama, semuanya terbuka. Bedanya hanya durasi: Free 24 jam, Pro 1 bulan.</p></details>
+          <details name="faq"><summary><span data-i18n="faq.2.q">Bisa dipakai tanpa internet?</span></summary><p data-i18n="faq.2.a">Bisa. Katana Render dapat dipakai online maupun offline.</p></details>
+          <details name="faq"><summary><span data-i18n="faq.3.q">Format apa saja yang bisa diekspor?</span></summary><p data-i18n="faq.3.a">Video: MP4, WEBP, GIF, APNG. Gambar: PNG dan JPG (raster), SVG, EPS, dan AI (vektor).</p></details>
+          <details name="faq"><summary><span data-i18n="faq.4.q">Berapa resolusi maksimalnya?</span></summary><p data-i18n="faq.4.a">Video hingga 4K dengan enkoder HEVC, gambar hingga 8K.</p></details>
+          <details name="faq"><summary><span data-i18n="faq.5.q">Butuh Android versi berapa?</span></summary><p data-i18n="faq.5.a">Android 7.0 (API 24) atau lebih baru.</p></details>
+          <details name="faq"><summary><span data-i18n="faq.6.q">Bagaimana cara berlangganan Pro?</span></summary><p data-i18n="faq.6.a">Hubungi Cloud Sunnah lewat WhatsApp atau email di bagian kontak di bawah.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section contact" id="contact">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow" data-reveal data-i18n="contact.eyebrow">Kontak</p>
+          <h2 class="h-display" data-reveal data-i18n="contact.title">Ada pertanyaan, atau mau ambil Pro?</h2>
+          <p class="lead" data-reveal data-i18n="contact.lead">Hubungi Cloud Sunnah langsung.</p>
+        </header>
+
+        <div class="contact__grid">
+          <article class="ccard cut" data-reveal>
+            <svg class="ccard__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.6-4.7A8.5 8.5 0 1 1 8 19.6L3 21z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1.2-1.3-2-1-.9.7c-.8-.4-1.5-1.1-1.9-1.9l.7-.9-1-2L9 9.5z"/></svg>
+            <p class="ccard__k mono">WhatsApp</p>
+            <p class="ccard__v">0856 4854 5159</p>
+            <div class="ccard__act">
+              <a class="btn btn--sm" id="wa-contact" href="https://wa.me/6285648545159" target="_blank" rel="noopener" data-wa="contact.wa.msg" data-i18n="contact.open">Buka</a>
+              <button type="button" class="btn btn--sm btn--ghost" data-copy="085648545159"><span data-i18n="contact.copy">Salin</span></button>
+            </div>
+          </article>
+
+          <article class="ccard cut" data-reveal style="--d:100ms">
+            <svg class="ccard__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+            <p class="ccard__k mono">Email</p>
+            <p class="ccard__v ccard__v--mail">cloudsunnah.message@gmail.com</p>
+            <div class="ccard__act">
+              <a class="btn btn--sm" href="mailto:cloudsunnah.message@gmail.com?subject=Katana%20Render" data-i18n="contact.open">Buka</a>
+              <button type="button" class="btn btn--sm btn--ghost" data-copy="cloudsunnah.message@gmail.com"><span data-i18n="contact.copy">Salin</span></button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer__in">
+      <a class="footer__brand" href="#top">
+        <img src="assets/img/logo.webp" width="48" height="48" loading="lazy" alt="">
+        <span>
+          <b class="h-display">Katana Render</b>
+          <small data-i18n="footer.tag">Merender animasi web ke video 4K dan gambar 8K.</small>
+        </span>
+      </a>
+      <p class="footer__meta mono">Katana Render Studio · v1.0 · Cloud Sunnah</p>
+      <p class="footer__meta mono">© 2026 · <span data-i18n="footer.rights">Seluruh hak cipta dilindungi.</span></p>
+      <a class="footer__top mono" href="#top" data-i18n="footer.top">Kembali ke atas</a>
+    </div>
+  </footer>
+
+  <!-- Dialog QRIS -->
+  <dialog class="qrbox" id="qr-dialog" aria-labelledby="qr-title">
+    <div class="qrbox__in">
+      <div class="qrbox__head">
+        <span class="pcard__logo"><img src="assets/img/pay/qris-logo.webp" width="52" height="52" loading="lazy" alt=""></span>
+        <p class="h-display qrbox__t" id="qr-title">QRIS</p>
+        <button type="button" class="icon-btn" data-qr-close aria-label="Tutup" data-i18n-attr="aria-label:hum.close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+      <div class="qrbox__qr"><img src="assets/img/pay/me-bar-code.webp" width="1024" height="1024" loading="lazy" decoding="async" alt="Kode QR QRIS untuk pembayaran" data-i18n-attr="alt:hum.qris.alt"></div>
+      <p class="qrbox__hint" data-i18n="hum.qris.hint">Pindai dengan aplikasi bank atau e-wallet apa pun.</p>
+      <a class="btn btn--sm" href="assets/img/pay/me-bar-code.webp" download="katana-render-qris.webp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12m0 0l-5-5m5 5l5-5M5 20h14"/></svg><span data-i18n="hum.qris.save">Unduh QR</span></a>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Kamus bahasa -->
+  <script src="js/i18n/id.js"></script>
+  <script src="js/i18n/en.js"></script>
+  <!-- Inti -->
+  <script src="js/core/utils.js"></script>
+  <script src="js/core/theme.js"></script>
+  <script src="js/core/i18n.js"></script>
+  <script src="js/core/reveal.js"></script>
+  <!-- Komponen -->
+  <script src="js/components/nav.js"></script>
+  <script src="js/components/hero.js"></script>
+  <script src="js/components/marquee.js"></script>
+  <script src="js/components/parallax.js"></script>
+  <script src="js/components/engines.js"></script>
+  <script src="js/components/contact.js"></script>
+  <script src="js/components/humanity.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+.contact { background: var(--bg-2); border-top: 1px solid var(--line); }
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.ccard {
+  --c: 26px;
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  padding: clamp(24px, 3vw, 36px);
+  transition: transform 0.3s var(--ease);
+}
+.ccard:hover { transform: translateY(-4px); --cut-line: var(--accent); }
+
+.ccard__ic { width: 34px; height: 34px; color: var(--accent); margin-bottom: 8px; }
+.ccard__k { color: var(--ink-3); font-size: 0.7rem; }
+.ccard__v {
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  overflow-wrap: anywhere;
+}
+.ccard__v--mail { font-size: clamp(1.3rem, 2.6vw, 2.1rem); line-height: 1.15; }
+.ccard__act { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+
+@media (max-width: 760px) {
+  .contact__grid { grid-template-columns: 1fr; }
+}

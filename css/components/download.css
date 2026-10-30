@@ -1,0 +1,40 @@
+/* Band unduh: selalu gelap supaya cahaya neon logo menyatu */
+.download {
+  background:
+    radial-gradient(60% 90% at 22% 50%, rgba(37, 232, 242, 0.2), transparent 70%),
+    linear-gradient(rgba(230, 244, 245, 0.04) 1px, transparent 1px) 0 0 / 100% 56px,
+    var(--stage);
+  color: var(--stage-ink);
+  padding-block: clamp(64px, 9vw, 120px);
+  overflow: hidden;
+  clip-path: polygon(0 28px, 100% 0, 100% calc(100% - 28px), 0 100%);
+}
+
+.download__in {
+  display: grid;
+  grid-template-columns: minmax(200px, 360px) minmax(0, 1fr);
+  gap: clamp(28px, 6vw, 88px);
+  align-items: center;
+}
+
+.download__logo img {
+  width: 100%;
+  max-width: 360px;
+  border-radius: 28px;
+  box-shadow: 0 0 0 1px rgba(230, 244, 245, 0.18), 0 0 90px rgba(37, 232, 242, 0.35);
+  margin-inline: auto;
+}
+
+.download__copy { display: grid; gap: 20px; justify-items: start; }
+.download .eyebrow { color: var(--neon); }
+.download .han { font-family: var(--f-han); font-weight: 900; font-size: 1.2em; letter-spacing: 0.05em; }
+.download h2 { font-size: clamp(2.8rem, 7vw, 5.75rem); color: var(--stage-ink); }
+.download .lead { color: var(--stage-ink-2); }
+
+.download__act { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; margin-top: 8px; }
+.download__meta { color: var(--stage-ink-2); font-size: 0.7rem; margin: 0; }
+
+@media (max-width: 760px) {
+  .download__in { grid-template-columns: 1fr; text-align: left; }
+  .download__logo img { max-width: 220px; margin-inline: 0; }
+}

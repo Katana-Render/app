@@ -1,0 +1,44 @@
+/* Font dibundel lokal (tanpa CDN) agar situs tetap utuh saat offline */
+@font-face {
+  font-family: "Big Shoulders Display";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url("../../assets/fonts/big-shoulders-display-latin-700-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Big Shoulders Display";
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+  src: url("../../assets/fonts/big-shoulders-display-latin-800-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Big Shoulders Display";
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+  src: url("../../assets/fonts/big-shoulders-display-latin-900-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Instrument Sans";
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+  src: url("../../assets/fonts/instrument-sans-latin-wght-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+  src: url("../../assets/fonts/jetbrains-mono-latin-wght-normal.woff2") format("woff2");
+}
+/* Subset 4 glif: 刀 你 敢 吗 (motif visor samurai) */
+@font-face {
+  font-family: "Katana Han";
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+  src: url("../../assets/fonts/noto-serif-sc-subset.woff2") format("woff2");
+}

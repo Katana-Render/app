@@ -1,0 +1,19 @@
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(24px + env(safe-area-inset-bottom));
+  z-index: 90;
+  padding: 12px 20px;
+  font-family: var(--f-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--accent-ink);
+  background: var(--accent);
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  opacity: 0;
+  transform: translate(-50%, 16px);
+  pointer-events: none;
+  transition: opacity 0.25s, transform 0.35s var(--ease);
+}
+.toast.is-on { opacity: 1; transform: translate(-50%, 0); }

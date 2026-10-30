@@ -1,0 +1,107 @@
+.bento {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-areas:
+    "a a a a a b b b b b b b"
+    "a a a a a c c c c d d d"
+    "a a a a a e e e e f f f";
+  gap: 14px;
+}
+.cell--a { grid-area: a; }
+.cell--b { grid-area: b; }
+.cell--c { grid-area: c; }
+.cell--d { grid-area: d; }
+.cell--e { grid-area: e; }
+.cell--f { grid-area: f; }
+
+.cell {
+  --c: 20px;
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  padding: clamp(20px, 2.4vw, 30px);
+  min-height: 190px;
+  overflow: hidden;
+}
+.cell__t { color: var(--ink); }
+.cell__t--sm {
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-size: 1.6rem;
+  line-height: 1;
+  text-transform: uppercase;
+}
+.cell__d { color: var(--ink-2); font-size: 0.97rem; text-wrap: pretty; }
+.cell__tag { color: var(--accent); font-size: 0.7rem; }
+
+/* Sel besar: tokoh yang tetap berdiri meski tertancap panah */
+.cell--a { min-height: 640px; align-content: end; --cut-bg: var(--surface-2); }
+.cell--a .cell__t { font-size: clamp(2.2rem, 3.6vw, 3.1rem); max-width: 14ch; position: relative; z-index: 2; }
+.cell--a .cell__d { max-width: 30ch; position: relative; z-index: 2; }
+.cell--a .cell__tag { position: relative; z-index: 2; }
+.cell__art {
+  position: absolute;
+  left: 50%;
+  top: -2%;
+  width: min(104%, 520px);
+  transform: translateX(-50%);
+  z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 0 40px rgba(37, 232, 242, 0.2));
+  -webkit-mask-image: linear-gradient(180deg, #000 52%, transparent 88%);
+  mask-image: linear-gradient(180deg, #000 52%, transparent 88%);
+}
+
+.cell__list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 18px; margin-top: 8px; }
+.cell__list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  font-weight: 500;
+  border-top: 1px solid var(--line);
+}
+.cell__list .mono {
+  display: grid;
+  place-items: center;
+  width: 26px; height: 26px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--accent-ink);
+  background: var(--accent);
+  transform: skewX(-12deg);
+}
+
+.cell__big {
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: clamp(4.5rem, 8vw, 6.5rem);
+  line-height: 0.8;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--accent);
+  letter-spacing: -0.01em;
+}
+
+@media (max-width: 960px) {
+  .bento {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      "a a"
+      "b b"
+      "c f"
+      "d e";
+  }
+  .cell--a { min-height: 600px; }
+  .cell__art { width: min(78%, 440px); }
+}
+
+@media (max-width: 560px) {
+  .bento {
+    grid-template-columns: 1fr;
+    grid-template-areas: "a" "b" "c" "d" "e" "f";
+  }
+  .cell { min-height: 0; }
+  .cell--a { min-height: 560px; }
+  .cell__art { width: 104%; }
+  .cell__list { grid-template-columns: 1fr; gap: 0; }
+}

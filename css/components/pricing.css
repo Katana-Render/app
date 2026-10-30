@@ -1,0 +1,110 @@
+.plans {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.plan {
+  --c: 28px;
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: 22px;
+  padding: clamp(24px, 3vw, 40px);
+  overflow: hidden;
+}
+
+.plan--pro {
+  --cut-line: var(--accent);
+  --cut-bg: var(--surface-2);
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 0;
+}
+.plan__copy { display: grid; gap: 22px; align-content: start; position: relative; z-index: 2; }
+
+.plan__head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.plan__name { font-size: clamp(2.2rem, 4vw, 3.25rem); }
+.plan__tag {
+  padding: 6px 12px;
+  font-size: 0.68rem;
+  color: var(--ink-2);
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+}
+.plan__tag--hot { color: var(--accent-ink); background: var(--accent); border-color: var(--accent); font-weight: 700; }
+
+.plan__price { display: flex; align-items: baseline; flex-wrap: wrap; gap: 10px 12px; }
+.plan__amt {
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: clamp(4.5rem, 8vw, 7rem);
+  line-height: 0.8;
+  letter-spacing: -0.01em;
+}
+.plan--pro .plan__amt { color: var(--accent); }
+.plan__was { font-family: var(--f-display); font-weight: 700; font-size: 2.2rem; color: var(--ink-3); }
+.plan__was s { text-decoration-thickness: 3px; text-decoration-color: var(--seal); }
+.plan__per { font-family: var(--f-mono); font-size: 0.8rem; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.08em; }
+
+.plan__list { display: grid; gap: 12px; }
+.plan__list li { position: relative; padding-left: 28px; }
+.plan__list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.5em;
+  width: 16px; height: 8px;
+  border-left: 2px solid var(--accent);
+  border-bottom: 2px solid var(--accent);
+  transform: rotate(-48deg) scale(0.9);
+  transform-origin: left bottom;
+}
+
+.plan__cta { justify-self: start; margin-top: 6px; }
+
+/* Karakter pegang uang */
+.plan__art { position: relative; min-height: 320px; }
+.plan__art img {
+  position: absolute;
+  right: -14%;
+  bottom: -14%;
+  width: 118%;
+  max-width: none;
+  filter: drop-shadow(0 0 40px rgba(37, 232, 242, 0.2));
+}
+
+/* Stempel hanko */
+.seal {
+  position: absolute;
+  top: clamp(60px, 7vw, 84px);
+  right: clamp(16px, 3vw, 36px);
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 92px; height: 92px;
+  color: #fff;
+  background: var(--seal);
+  border: 3px double rgba(255, 255, 255, 0.85);
+  outline: 3px solid var(--seal);
+  outline-offset: -1px;
+  transform: rotate(-9deg);
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: 2.1rem;
+  letter-spacing: 0.01em;
+  box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.55);
+  mix-blend-mode: normal;
+}
+.seal span { transform: translateY(1px); }
+
+@media (max-width: 1020px) {
+  .plans { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 620px) {
+  .plan--pro { grid-template-columns: 1fr; }
+  .plan__art { min-height: 300px; margin-top: 8px; }
+  .plan__art img { right: -20%; width: 120%; bottom: -16%; }
+  .seal { width: 76px; height: 76px; font-size: 1.7rem; top: auto; bottom: 28px; right: 16px; }
+  .plan--pro .plan__head { padding-right: 0; }
+}

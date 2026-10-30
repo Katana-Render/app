@@ -1,0 +1,71 @@
+.marquee {
+  /* Urutan: 0 kuning, 1 merah, 2 putih, 3 hijau */
+  --mq-0: #ffd43b;
+  --mq-1: #ff4a52;
+  --mq-2: #f2fbfc;
+  --mq-3: #3ee08f;
+  display: grid;
+  gap: 8px;
+  padding-block: 14px 16px;
+  border-block: 1px solid var(--line);
+  background: var(--bg-2);
+}
+/* Tema terang: kuning dan putih digelapkan agar tetap terbaca di atas kertas */
+:root[data-theme="light"] .marquee {
+  --mq-0: #9a6700;
+  --mq-1: #c9232b;
+  --mq-2: #071115;
+  --mq-3: #17803d;
+}
+
+.marquee__label {
+  text-align: center;
+  color: var(--ink-3);
+  font-size: 0.64rem;
+}
+
+.marquee__viewport {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+.marquee__track { display: flex; width: max-content; animation: marquee 38s linear infinite; }
+.marquee__viewport:hover .marquee__track { animation-play-state: paused; }
+
+/* min-width: daftar tak pernah lebih sempit dari layar, jadi putaran tetap tanpa celah */
+.marquee__list { display: flex; flex: none; align-items: center; justify-content: space-around; min-width: 100vw; }
+.marquee__list li {
+  display: flex;
+  align-items: center;
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-size: clamp(1.1rem, 2vw, 1.6rem);
+  line-height: 1.25;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  color: var(--mq-0);
+}
+/* Warna awal (tanpa JS); marquee.js menggantinya lewat data-c */
+.marquee__list li:where(:nth-child(4n + 2)) { color: var(--mq-1); }
+.marquee__list li:where(:nth-child(4n + 3)) { color: var(--mq-2); }
+.marquee__list li:where(:nth-child(4n + 4)) { color: var(--mq-3); }
+.marquee__list li[data-c="0"] { color: var(--mq-0); }
+.marquee__list li[data-c="1"] { color: var(--mq-1); }
+.marquee__list li[data-c="2"] { color: var(--mq-2); }
+.marquee__list li[data-c="3"] { color: var(--mq-3); }
+
+.marquee__list li::after {
+  content: "";
+  width: 16px; height: 2px;
+  margin-inline: clamp(18px, 2.4vw, 34px);
+  background: var(--accent);
+  transform: skewX(-35deg);
+}
+
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* Mode "kurangi gerak": tetap berputar, tapi lebih pelan */
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track { animation-duration: 70s; }
+}

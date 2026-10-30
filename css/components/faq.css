@@ -1,0 +1,55 @@
+.faq__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+  gap: clamp(28px, 6vw, 96px);
+  align-items: start;
+}
+.faq__grid .section-head { margin-bottom: 0; position: sticky; top: calc(var(--nav-h) + 28px); }
+
+.faq__list { border-top: 2px solid var(--ink); }
+
+.faq details { border-bottom: 1px solid var(--line-strong); }
+
+.faq summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px 4px;
+  list-style: none;
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+  text-transform: uppercase;
+  line-height: 1.1;
+  transition: color 0.2s;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary:hover { color: var(--accent); }
+
+/* Ikon plus yang berubah menjadi tebasan */
+.faq summary::after {
+  content: "";
+  flex: none;
+  width: 22px; height: 22px;
+  background:
+    linear-gradient(currentColor, currentColor) center / 100% 2px no-repeat,
+    linear-gradient(currentColor, currentColor) center / 2px 100% no-repeat;
+  color: var(--accent);
+  transition: transform 0.35s var(--ease);
+}
+.faq details[open] summary::after { transform: rotate(135deg); }
+.faq details[open] summary { color: var(--accent); }
+
+.faq details p {
+  padding: 0 44px 24px 4px;
+  max-width: 58ch;
+  color: var(--ink-2);
+  animation: faq-in 0.4s var(--ease);
+}
+@keyframes faq-in { from { opacity: 0; transform: translateY(-6px); } }
+
+@media (max-width: 900px) {
+  .faq__grid { grid-template-columns: 1fr; }
+  .faq__grid .section-head { position: static; margin-bottom: 8px; }
+}

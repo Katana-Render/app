@@ -1,0 +1,78 @@
+main, footer, header, section { position: relative; z-index: 1; }
+
+.container {
+  width: min(var(--maxw), 100% - var(--gutter) * 2);
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: clamp(60px, 8vw, 108px);
+}
+
+.section-head {
+  display: grid;
+  gap: 18px;
+  margin-bottom: clamp(36px, 5vw, 64px);
+  max-width: 860px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip {
+  position: fixed;
+  left: 12px; top: -60px;
+  z-index: 100;
+  padding: 10px 16px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-family: var(--f-mono);
+  font-size: 13px;
+  border-radius: 6px;
+  transition: top 0.2s;
+}
+.skip:focus { top: 12px; }
+
+/* Sudut terpotong ala bilah katana. Garis tepi dibuat dari dua lapis pseudo. */
+.cut {
+  --c: 22px;
+  --cut-bg: var(--surface);
+  --cut-line: var(--line-strong);
+  --poly: 0 0, calc(100% - var(--c)) 0, 100% var(--c), 100% 100%, var(--c) 100%, 0 calc(100% - var(--c));
+  --poly2: 0 0, calc(100% - var(--c) + 0.6px) 0, 100% calc(var(--c) - 0.6px), 100% 100%, calc(var(--c) - 0.6px) 100%, 0 calc(100% - var(--c) + 0.6px);
+  position: relative;
+  isolation: isolate;
+  clip-path: polygon(var(--poly));
+}
+.cut::before,
+.cut::after { content: ""; position: absolute; }
+.cut::before { inset: 0; background: var(--cut-line); z-index: -2; }
+.cut::after { inset: 1px; background: var(--cut-bg); clip-path: polygon(var(--poly2)); z-index: -1; }
+
+/* Muncul saat di-scroll */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+  transition-delay: var(--d, 0ms);
+}
+.js [data-reveal].is-in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal] { opacity: 1; transform: none; }
+}
+
+/* Karakter cutout: cahaya cyan di tema gelap, bayangan netral di tema terang */
+:root[data-theme="light"] .engines__art,
+:root[data-theme="light"] .cell__art,
+:root[data-theme="light"] .specs__frame img,
+:root[data-theme="light"] .plan__art img {
+  filter: drop-shadow(0 18px 28px rgba(5, 20, 24, 0.22));
+}

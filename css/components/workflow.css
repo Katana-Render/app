@@ -1,0 +1,52 @@
+.workflow__steps {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 4vw, 56px);
+  counter-reset: step;
+}
+
+
+.step { position: relative; display: grid; gap: 14px; align-content: start; padding-top: 0; }
+
+.step__no {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: clamp(4rem, 8vw, 6.5rem);
+  line-height: 0.85;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--accent);
+}
+/* Garis tebasan di kanan angka, menyambung ke langkah berikutnya */
+.step__no::after {
+  content: "";
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--line-strong) 80%, transparent);
+  transform: skewX(-35deg);
+}
+
+.step__t {
+  margin-top: 18px;
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+  text-transform: uppercase;
+  line-height: 1;
+}
+.step__d { color: var(--ink-2); max-width: 36ch; text-wrap: pretty; }
+.step__tags { color: var(--accent); font-size: 0.7rem; padding-top: 6px; }
+
+@media (max-width: 820px) {
+  .workflow__steps { grid-template-columns: 1fr; gap: 0; }
+  .workflow__steps::before { content: ""; position: absolute; top: 0; bottom: 0; left: 20px; width: 2px; background: linear-gradient(180deg, var(--accent), var(--line-strong)); }
+  .step__no::after { display: none; }
+  .step { padding: 0 0 40px 56px; }
+  .step:last-child { padding-bottom: 0; }
+  .step__no { position: absolute; left: 0; top: 0; padding: 4px 0 8px; font-size: 2.6rem; -webkit-text-stroke-width: 1.2px; width: 42px; justify-content: center; letter-spacing: -0.04em; background: var(--bg); }
+  .step__t { margin-top: 4px; }
+}
