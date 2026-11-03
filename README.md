@@ -23,7 +23,7 @@ Render CSS Keyframes, GSAP, Canvas 2D, Three.js, sampai GLSL Shader langsung dar
 
 [![Unduh untuk Android](https://img.shields.io/badge/UNDUH_UNTUK_ANDROID-25e8f2?style=for-the-badge&logo=android&logoColor=021417&labelColor=05090b)](https://drive.google.com/file/d/1p0Or61ZKCvpSlq1IS3G8PipPp3eMgtTs/view?usp=drivesdk)
 
-<sub>Coba gratis 24 jam · semua fitur terbuka</sub>
+<sub>Coba gratis 24 jam · ekspor hingga 1440p QHD</sub>
 
 <br>
 
@@ -116,7 +116,7 @@ Render CSS Keyframes, GSAP, Canvas 2D, Three.js, sampai GLSL Shader langsung dar
 | **Kompatibilitas** | Android 7.0 (API 24) atau lebih baru |
 | **Arsitektur mesin** | M0 Deterministic Virtual Clock |
 | **Enkoder** | HEVC (hingga 4K) |
-| **Keluaran video** | `MP4` · `WEBP` · `GIF` · `APNG` |
+| **Keluaran video dan animasi** | `MP4` · `GIF` · `WebP` · `APNG` |
 | **Keluaran gambar** | Raster: `PNG` · `JPG` — Vektor: `SVG` · `EPS` · `AI` |
 | **Pintu masuk kode** | Edit manual · impor file HTML · arsip ZIP · live web |
 
@@ -124,12 +124,17 @@ Render CSS Keyframes, GSAP, Canvas 2D, Three.js, sampai GLSL Shader langsung dar
 
 ## 💳 Paket dan harga
 
-Semua fitur terbuka di kedua paket. Bedanya hanya lama akses.
+Free untuk mencoba selama 24 jam, hingga 1440p QHD. Pro membuka 4K, 8K, dan ekspor tanpa batas jumlah.
 
 | | **Free** | **Pro** |
-|---|:-:|:-:|
-| Fitur | Semua terbuka | Semua terbuka |
-| Akses | 24 jam | 1 bulan |
+|---|---|---|
+| Video MP4 | 1440p QHD hingga 60 FPS | 4K UHD hingga 60 FPS |
+| Animasi (GIF, WebP, APNG) | 1440p QHD | 4K |
+| Gambar | HD | 4K dan 8K |
+| Ukuran kustom (GIF, WebP, APNG) | Di bawah 4K | Di atas 4K |
+| Jumlah ekspor video dan gambar | — | Tanpa batas |
+| Dukungan | — | Ikut mendukung bantuan kemanusiaan · dukungan langsung dari tim pengembang |
+| Akses | Berhenti setelah 24 jam | 1 bulan |
 | Harga | **$0** | **$1** / bulan <sub>(normal $5, diskon 80%)</sub> |
 | Cara mulai | Unduh dan langsung coba | Berlangganan via [WhatsApp](https://wa.me/6285648545159?text=Halo%20Cloud%20Sunnah%2C%20saya%20ingin%20berlangganan%20Katana%20Render%20Pro.) |
 
@@ -140,7 +145,7 @@ Semua fitur terbuka di kedua paket. Bedanya hanya lama akses.
 <details>
 <summary><b>Apa bedanya Free dan Pro?</b></summary>
 <br>
-Fiturnya sama, semuanya terbuka. Bedanya hanya durasi: Free 24 jam, Pro 1 bulan.
+Free untuk mencoba selama 24 jam: video MP4 1440p QHD hingga 60 FPS, animasi 1440p QHD, dan gambar HD. Pro membuka video dan animasi 4K, gambar 4K dan 8K, ukuran kustom di atas 4K, ekspor tanpa batas jumlah, serta dukungan langsung dari tim pengembang.
 </details>
 
 <details>
@@ -152,13 +157,13 @@ Bisa. Katana Render dapat dipakai online maupun offline.
 <details>
 <summary><b>Format apa saja yang bisa diekspor?</b></summary>
 <br>
-Video: MP4, WEBP, GIF, APNG. Gambar: PNG dan JPG (raster), SVG, EPS, dan AI (vektor).
+Video: MP4. Animasi: GIF, WebP, dan APNG. Gambar: PNG dan JPG (raster), SVG, EPS, dan AI (vektor).
 </details>
 
 <details>
 <summary><b>Berapa resolusi maksimalnya?</b></summary>
 <br>
-Video hingga 4K dengan enkoder HEVC, gambar hingga 8K.
+Free: video hingga 1440p QHD, gambar HD, dan animasi 1440p QHD atau ukuran kustom di bawah 4K. Pro: video 4K UHD, gambar hingga 8K, dan animasi 4K atau ukuran kustom di atas 4K.
 </details>
 
 <details>
@@ -217,7 +222,7 @@ Pembayaran resmi, lengkap dengan kode QRIS, GoPay, dan Bank Jago, hanya ada di h
 
 Bring your code by typing it, importing an HTML file, opening a ZIP archive, or loading from the live web. Export to MP4, WEBP, GIF, APNG, PNG, JPG, SVG, EPS or AI.
 
-**Plans:** Free gives 24 hours of full access at $0. Pro gives 1 month of full access at $1/month (normally $5). To subscribe, message Cloud Sunnah on WhatsApp or email.
+**Plans:** Free ($0) is a 24-hour trial: MP4 video at 1440p QHD up to 60 FPS, 1440p QHD animation (GIF, WebP, APNG), HD images and custom sizes below 4K. Pro ($1/month, normally $5) unlocks 4K UHD video up to 60 FPS, 4K animation, 4K and 8K images, custom sizes above 4K, unlimited exports and direct support from the development team. To subscribe, message Cloud Sunnah on WhatsApp or email.
 
 </details>
 

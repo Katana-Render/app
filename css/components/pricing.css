@@ -15,6 +15,10 @@
   overflow: hidden;
 }
 
+/* Free lebih pendek dari Pro: tombol tetap rata di dasar kartu */
+.plan--free { grid-template-rows: auto auto 1fr auto; }
+.plan--free .plan__list { align-content: start; }
+
 .plan--pro {
   --cut-line: var(--accent);
   --cut-bg: var(--surface-2);
@@ -99,6 +103,7 @@
 
 @media (max-width: 1020px) {
   .plans { grid-template-columns: 1fr; }
+  .plan--free { grid-template-rows: none; }
 }
 
 @media (max-width: 620px) {
